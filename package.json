@@ -1,6 +1,6 @@
 {
 	"name": "yPush",
-	"version": "0.0.1",
+	"version": "0.9.0",
 	"description": "Simplifying developer alerts <3",
 	"main": "index.js",
 	"author": "Daniel Freytag <daniel@frytg.com>",
@@ -8,6 +8,7 @@
     "type": "git",
     	"url": "https://github.com/frytg/yPush.git"
   	},
+	"homepage": "https://github.com/frytg/yPush/blob/master/README.md",
 	"scripts": {
 		"start": "gcloud beta functions deploy telegramWebhook --env-vars-file config.yaml --runtime nodejs6 --trigger-http --region europe-west1"
 	},

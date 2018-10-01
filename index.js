@@ -20,16 +20,19 @@ var request = require('request');
 
 function telegramWebhook(req, res, payload) {
 		try {
+			// If Token is invalid, return 403 and quit
 			if(payload.token != process.env.WEBHOOK_TOKEN) {
 				res.sendStatus(403);
-				return Promise.reject();
+				return Promise.resolve();
 			}
 
+			// If Text is too short, return 400
 			if(payload.text.length < 1) {
-				res.sendStatus(500);
-				return Promise.reject();
+				res.sendStatus(400);
+				return Promise.resolve();
 			}
 
+			// Build POST options
 			var options = {
 			  uri: 'https://api.telegram.org/bot' + process.env.TELEGRAM_BOT_TOKEN + '/sendMessage',
 			  method: 'POST',
@@ -40,6 +43,7 @@ function telegramWebhook(req, res, payload) {
 			  }
 			};
 
+			// Send POST request and handle feedback
 			request(options, function (error, response, body) {
 				if (!error && response.statusCode != 200) {
 					console.error('An error occured while making a POST request to Telegram.');
@@ -49,7 +53,7 @@ function telegramWebhook(req, res, payload) {
 					console.error({ options });
 
 					res.status(500).json(body);
-					return Promise.reject();
+					return Promise.resolve();
 
 				} else {
 					res.sendStatus(200);
