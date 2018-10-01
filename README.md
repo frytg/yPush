@@ -2,6 +2,9 @@
 #### Simplifying developer alerts <3
 
 
+## ADVANTAGES
+This package allows you to create a Cloud Function inside GCP to push alerts to your own channel in Telegram. This way you don't have to maintain the Telegram API inside every microservice. Just one your personal GCF and token to send small bits and pieces to your phone.
+
 ## INSTALL
 
 - Make sure you have gcloud CLI installed and set up
@@ -18,7 +21,6 @@
 - In the end you will receive an url like this: https://europe-west1-PROJECT-NAME.cloudfunctions.net/telegramWebhook
 
 ## POST
-
 Now let's post stuff to this endpoint. Simply build a JSON object and send it to your cloudfunctions URL from above:
 ```
 {
@@ -31,5 +33,5 @@ To make text more readable in Telegram, you can use [Telegram's Markdown Style](
 ```
 _DEV_: *my-microservice-name*: Error something something happened`
 ```
-which results in:
+which results in:  
 _DEV_: **my-microservice-name**: Error something something happened`
