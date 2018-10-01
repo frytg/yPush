@@ -35,11 +35,11 @@ _DEV_: *my-microservice-name*: Error something something happened`
 ```
 which results in:  
 > _DEV_: **my-microservice-name**: Error something something happened`
-  
+
 
 #### POST RESPONSE
 You may want to handle HTTP response codes within your microservice:
-- `200` Request fulfilled
+- `200` Request fulfilled
 - `400` Request invalid (most likely due to wrong text)
 - `403` Wrong Token
 - `500` Telegram Error (JSON output will be returned)
