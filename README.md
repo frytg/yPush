@@ -27,9 +27,9 @@ Now let's post stuff to this endpoint. Simply build a JSON object and send it to
 }
 ```
 
-To make text more readable in Telegram, you can use Markdown to format your messages. For example:
+To make text more readable in Telegram, you can use [Telegram's Markdown Style](https://core.telegram.org/bots/api#markdown-style) to format your messages. For example:
 ```
 _DEV_: *my-microservice-name*: Error something something happened`
 ```
 which results in:
-_DEV_: *my-microservice-name*: Error something something happened`
+_DEV_: **my-microservice-name**: Error something something happened`
