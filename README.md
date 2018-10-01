@@ -7,7 +7,7 @@ This package allows you to create a Cloud Function inside GCP to push alerts to 
 
 ## INSTALL
 
-- Make sure you have gcloud CLI installed and set up
+- Make sure you have gcloud CLI + beta component installed and set up
 - Duplicate _config-demo.yaml_ to _config_yaml_
 - Replace `WEBHOOK_TOKEN` in _config.yaml_ with a secure token for your application
 - Text [@BotFather](http://t.me/BotFather) to make a new Bot
