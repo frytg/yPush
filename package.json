@@ -10,7 +10,7 @@
   	},
 	"homepage": "https://github.com/frytg/yPush/blob/master/README.md",
 	"scripts": {
-		"start": "gcloud beta functions deploy telegramWebhook --env-vars-file config.yaml --runtime nodejs6 --trigger-http --region europe-west1"
+		"deploy": "gcloud beta functions deploy telegramWebhook --env-vars-file config.yaml --memory 128MB --runtime nodejs6 --trigger-http --region europe-west1"
 	},
 	"license": "MIT",
 	"dependencies": {

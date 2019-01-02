@@ -17,7 +17,7 @@ This package allows you to create a Cloud Function inside GCP to push alerts to 
 - Open [web.telegram.org](https://web.telegram.org) and click on your channel. In the URL you will see something like this:   `.../#/im?p=c1234567890_1234567890123456789`
 - Copy the numbers after  `?p=c` but before the `_` underscore. Paste it to _config.yaml_ -> `TELEGRAM_CHANNEL_NAME`
 - Add `-100` to the beginning so it looks something like this: `-1001234567890`
-- Run `npm start` to deploy your function.
+- Run `npm run deploy` to deploy your function.
 - _gcloud_ CLI will return an url like this: https://europe-west1-PROJECT-NAME.cloudfunctions.net/telegramWebhook
 
 ## POST
