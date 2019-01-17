@@ -54,3 +54,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## AUTHOR
 
 - **Daniel Freytag** - [Github](https://github.com/FRYTG) / [Twitter](https://twitter.com/FRYTG)
+- Developed at [**SWR Südwestrundfunk**](https://www.swr.de)
