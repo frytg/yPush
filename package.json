@@ -5,15 +5,15 @@
 	"main": "index.js",
 	"author": "Daniel Freytag <daniel@frytg.com>",
 	"repository": {
-    "type": "git",
-    	"url": "https://github.com/frytg/yPush.git"
-  	},
+		"type": "git",
+		"url": "https://github.com/frytg/yPush.git"
+	},
 	"homepage": "https://github.com/frytg/yPush/blob/master/README.md",
 	"scripts": {
-		"deploy": "gcloud beta functions deploy telegramWebhook --env-vars-file config.yaml --memory 128MB --runtime nodejs6 --trigger-http --region europe-west1"
+		"deploy": "gcloud beta functions deploy telegramWebhook --env-vars-file config.yaml --memory 128MB --runtime nodejs8 --trigger-http --region europe-west1"
 	},
 	"license": "MIT",
 	"dependencies": {
-		"request": "2.85.0"
+		"request": "2.88.0"
 	}
 }

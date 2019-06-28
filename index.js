@@ -2,15 +2,9 @@
 
 	yPush
 
-	GIT			https://github.com/frytg/yPush
-
-	DEBUG		-> README.md
-
 	AUTHOR		Daniel Freytag
-				daniel@frytg.com
-				https://twitter.com/FRYTG
-
-	UPDATED		October 2018
+			daniel@frytg.com
+			https://twitter.com/FRYTG
 
 */
 
