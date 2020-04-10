@@ -3,65 +3,60 @@
 	yPush
 
 	AUTHOR		Daniel Freytag
-			daniel@frytg.com
+			https://github.com/FRYTG
 			https://twitter.com/FRYTG
 
 */
 
 
-var request = require('request');
+var fetch 		= require('node-fetch')
 
 
-function telegramWebhook(req, res, payload) {
-		try {
-			// If Token is invalid, return 403 and quit
-			if(payload.token != process.env.WEBHOOK_TOKEN) {
-				res.sendStatus(403);
-				return Promise.resolve();
-			}
+const telegramWebhook = async function(req, res) { try {
+	// check token
+	if(req.body.token != process.env.WEBHOOK_TOKEN) {
+		res.sendStatus(403)
+		return Promise.resolve()
+	}
 
-			// If Text is too short, return 400
-			if(payload.text.length < 1) {
-				res.sendStatus(400);
-				return Promise.resolve();
-			}
+	// check text length
+	if(req.body.text.length < 1) {
+		res.sendStatus(400)
+		return Promise.resolve()
+	}
 
-			// Build POST options
-			var options = {
-			  uri: 'https://api.telegram.org/bot' + process.env.TELEGRAM_BOT_TOKEN + '/sendMessage',
-			  method: 'POST',
-			  json: {
-				  "parse_mode": "Markdown",
-				  "chat_id": process.env.TELEGRAM_CHANNEL_NAME,
-				  "text": payload.text
-			  }
-			};
 
-			// Send POST request and handle feedback
-			request(options, function (error, response, body) {
-				if (!error && response.statusCode != 200) {
-					console.error('An error occured while making a POST request to Telegram.');
-					console.error({ body });
-					console.error({ error });
-					console.error({ response });
-					console.error({ options });
-
-					res.status(500).json(body);
-					return Promise.resolve();
-
-				} else {
-					res.sendStatus(200);
-					return Promise.resolve();
-
-				}
-			});
-
-		} catch(err) {
-			console.error({err});
+	// build options
+	let options = {
+		url:	'https://api.telegram.org/bot' + process.env.TELEGRAM_BOT_TOKEN + '/sendMessage',
+		method: 'POST',
+		body:	JSON.stringify({
+			"parse_mode":	"Markdown",
+			"chat_id":	process.env.TELEGRAM_CHANNEL_NAME,
+			"text":		req.body.text
+		}),
+		headers:	{ 
+			'Content-Type':	'application/json',
+			'User-Agent':	'yPush/1.0.1'
 		}
+	}
 
-}
+	// send request
+	let post = await fetch(options.url, options)
+	
+	
+	// handle errors
+	if(post.status != 200) {
+		let text = await post.text()
+		console.error("yPush: " + text)
+	}
+
+	return Promise.resolve()
+
+} catch(err) {
+	console.error({err})
+} }
 
 exports.telegramWebhook = (req, res) => {
-	telegramWebhook(req, res, {token: req.body.token, text: req.body.text});
-};
+	telegramWebhook(req, res)
+}
